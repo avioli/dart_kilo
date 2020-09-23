@@ -176,10 +176,10 @@ void editorFindCallback(String query, Key key) {
 }
 
 void editorFind() {
-  var savedCursorCol = cursorCol;
-  var savedCursorRow = cursorRow;
-  var savedScreenFileRowOffset = screenFileRowOffset;
-  var savedScreenRowColOffset = screenRowColOffset;
+  final savedCursorCol = cursorCol;
+  final savedCursorRow = cursorRow;
+  final savedScreenFileRowOffset = screenFileRowOffset;
+  final savedScreenRowColOffset = screenRowColOffset;
 
   final query = editorPrompt(
       'Search (ESC to cancel, use arrows for prev/next): ', editorFindCallback);
@@ -239,7 +239,7 @@ void editorQuit() {
   if (isFileDirty) {
     editorSetStatusMessage('File is unsaved. Quit anyway (y or n)?');
     editorRefreshScreen();
-    Key response = console.readKey();
+    final response = console.readKey();
     if (response.char != 'y' && response.char != 'Y') {
       {
         editorSetStatusMessage('');
@@ -266,7 +266,7 @@ int getRenderedCol(int fileRow, int fileCol) {
 
   if (fileRow >= fileRows.length) return 0;
 
-  String rowText = fileRows[fileRow];
+  final rowText = fileRows[fileRow];
   for (var i = 0; i < fileCol; i++) {
     if (rowText[i] == '\t') {
       col += (kiloTabStopLength - 1) - (col % kiloTabStopLength);
@@ -281,7 +281,7 @@ int getRenderedCol(int fileRow, int fileCol) {
 int getFileCol(int row, int renderCol) {
   int currentRenderCol = 0;
   int fileCol;
-  String rowText = fileRows[row];
+  final rowText = fileRows[row];
   for (fileCol = 0; fileCol < rowText.length; fileCol++) {
     if (rowText[fileCol] == '\t') {
       currentRenderCol +=
