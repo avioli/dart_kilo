@@ -553,7 +553,7 @@ void editorProcessKeypress() {
 // ENTRY POINT
 //
 
-main(List<String> arguments) {
+void main(List<String> arguments) {
   try {
     console.rawMode = true;
     initEditor();
